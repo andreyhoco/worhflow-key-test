@@ -18,6 +18,8 @@ jobs:
       - name: 🔐 Set up permission
         run: chmod +x gradlew
       - name: 🔨 Build debug
+        env:
+          TEST_KEY: ${{ secrets.TEST_KEY}}
         run: ./gradlew assembleDebug
       - name: 🛠️ Unit-test
         run: ./gradlew test
