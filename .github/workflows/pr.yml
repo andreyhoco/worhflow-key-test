@@ -8,6 +8,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment: TEST_ENV
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.11
@@ -19,7 +20,7 @@ jobs:
         run: chmod +x gradlew
       - name: 🔨 Build debug
         env:
-          TEST_KEY: ${{ secrets.TEST_KEY}}
+          TEST_KEY: ${{ secrets.TEST_KEY }}
         run: ./gradlew assembleDebug
       - name: 🛠️ Unit-test
         run: ./gradlew test
